@@ -1,0 +1,209 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm()) { }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+        #slides{
+    position: relative;
+    height: 500px;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    image-resolution:from-image;
+    
+}
+  img {
+   max-width: 100%;
+    min-width: 300px;
+    height: auto;
+}
+
+.slide{
+    position: absolute;
+    left: 0px;
+    right: 10px;
+    top: 10px;
+    width: 1000%;
+    height: 1000%;
+    opacity: 0;
+    z-index: 1;
+    image-resolution:from-image;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.showing{
+    opacity: 1;
+    z-index: 2;
+    image-resolution:from-image;
+}
+
+.slide{
+        image-resolution:from-image;
+    font-size: 40px;
+    padding: 40px;
+    box-sizing: content-box;
+    color: #fff;
+}
+ .slider {
+      position: relative;
+      overflow: hidden;
+          image-resolution:from-image;
+
+    }
+
+    .slider__wrapper {
+      display: flex;
+      transition: transform 0.6s ease;
+          image-resolution:from-image;
+
+    }
+    .slider__item {
+      flex: 0 0 100%;
+      max-width: 100%;
+          image-resolution:from-image;
+
+    }
+
+}</style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet"  href="~/Content/slider.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/settings.css" media="screen" />
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="~/Content/reset.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/superfish.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/prettyPhoto.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/jquery.qtip.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+       <link rel="stylesheet" type="text/css" href="~/Content/animations.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/responsive.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/odometer-theme-default.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/style1.css">
+    </head>
+    <body>
+        <div class="slider">
+            <div class="slider__wrapper">
+                <div class="slider__item">
+                    <ul id="slides">
+                        <li class="slide showing" > <img class="img" src="~/Content/Image/avtoservis1 (1).jpg" >Slide 1</li>
+                        <li class="slide" ><img class="img" src="~/Content/Image/kartinka-6.jpg">Slide 2</li>
+                    </ul>
+               </div>
+          </div>
+      </div>  
+                <div class="site-container">
+                    <div class="theme-page">
+                        <div class="row page-margin-top-section">
+                            <div class="row">
+                                <h2 class="box-header">ПОЧЕМУ ВЫБРАЛИ НАС?</h2>
+                                <p class="description align-center">Мы являемся одним из ведущих автосервисов, обслуживающих клиентов в Харькове.<br>Все услуги механиков выполняются высококвалифицированными механиками.</p>
+                                <div class="row page-margin-top">
+                                    <div class="column column-1-3">
+                                        <ul class="features-list big">
+                                            <li>
+                                                <div class="hexagon"><div class="sl-small-user-chat"></div></div>
+                                                <h4 class="box-header page-margin-top">КАЖДАЯ РАБОТА ПЕРСОНАЛЬНАЯ</h4>
+                                                <p>Если вы хотите качество, которое вы ожидаете от представительства, но с более личной и дружеской атмосферой, вы нашли его.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="column column-1-3">
+                                        <ul class="features-list big">
+                                            <li>
+                                                <div class="hexagon"><div class="sl-small-wrench-screwdriver"></div></div>
+                                                <h4 class="box-header page-margin-top">ЛУЧШИЕ ИНСТРУМЕНТЫ</h4>
+                                                <p>Мы вложили средства во все новейшие специализированные инструменты и диагностическое программное обеспечение, специально разработанные для программного обеспечения вашего автомобиля.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="column column-1-3">
+                                        <ul class="features-list big">
+                                            <li>
+                                                <div class="hexagon"><div class="sl-small-truck-tow"></div></div>
+                                                <h4 class="box-header page-margin-top">ПРОФЕССИОНАЛЬНЫЕ СТАНДАРТЫ</h4>
+                                                <p>Наша авторемонтная мастерская способна обслуживать самые разные модели. Мы делаем только ту работу, которая необходима для решения вашей проблемы.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row page-margin-top-section">
+                            <div class="row">
+                                <h2 class="box-header">COMPANY OVERVIEW</h2>
+                                <p class="description align-center">Мы можем помочь вам во всем, от замены масла до замены двигателя.<br>Мы можем справиться с любой проблемой как на иностранных, так и на отечественных автомобилях.</p>
+                            </div>
+                            <div class="row page-margin-top-section">
+                                <div class="column column-1-3">
+                                    <ul class="features-list">
+                                        <li>
+                                            <h5>CAR AUDIO SERVICE</h5>
+                                            <div class="icon sl-small-car-audio"></div>
+                                            <p>Настраиваем и устанавливаем акустичемкие системы</p>
+                                        </li>
+                                        <li>
+                                            <h5>CAR A/C RECHARGE</h5>
+                                            <div class="icon sl-small-air-conditioning"></div>
+                                            <p>Заправляем и ремонтируем системы кондиционирования</li>
+                                    </ul>
+                                </div>
+                                <div class="column column-1-3">
+                                    <ul class="features-list">
+                                        <li>
+                                            <h5>OIL CHANGE</h5>
+                                            <div class="icon sl-small-car-oil"></div>
+                                            <p>Заменяем масла а так же любие жидкости в автомобиле</p>
+                                        </li>
+                                        <li>
+                                            <h5>PARKING SENSORS CALIBRATION</h5>
+                                            <div class="icon sl-small-parking-sensor"></div>
+                                            <p>Проводим калибровку системы парктроник</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="column column-1-3">
+                                    <ul class="features-list">
+                                        <li>
+                                            <h5>ENGINE DIAGNOSTICS</h5>
+                                            <div class="icon sl-small-signal-warning"></div>
+                                            <p>Проводим диагностику автомобиля через специализированые программы</p>
+                                        </li>
+                                        <li>
+                                            <h5>CAR BATTERY REPAIRS</h5>
+                                            <div class="icon sl-small-car-battery"></div>
+                                            <p>Заменяем или ремонтируем аккумуляторы</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <td></td>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <a href="#top" class="scroll-top animated-element template-arrow-up" title="Scroll to top"></a>
+            <div class="background-overlay"></div>
+            <!--js-->
+            <script>
+                var slides = document.querySelectorAll('#slides .slide');
+                var currentSlide = 0;
+                var slideInterval = setInterval(nextSlide, 2000);
+
+                function nextSlide() {
+                    slides[currentSlide].className = 'slide';
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].className = 'slide showing';
+                }
+            </script>
+    </body>
+</html>

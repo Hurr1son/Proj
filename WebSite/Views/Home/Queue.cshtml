@@ -1,0 +1,21 @@
+﻿@model WebSite.Models.Queue
+
+@{
+
+    ViewBag.Title = "Добавление к очереди";
+}
+
+<h2>Новая очередь</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Description, "Описание")
+    <br />
+    @Html.EditorFor(model => model.Description)
+    <br /><br />
+    @Html.LabelFor(model => model.DateTime, "Дата")
+    <br />
+    @Html.EditorFor(model => model.DateTime)
+    <br /><br />
+    <input type="submit" value="Добавить" />
+}

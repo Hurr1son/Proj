@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Car Assistant</h1>
+    <p class="lead">Наш сервис позволит Вам в удобной форме контролировать состояние своего автомобиля, а также все затраты связанные с ним.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <button class="btn btn-primary btn-large" onclick="location.href='@Url.Action("MyRoom", "Home")';return false;">Приступить к работе</button>
+        @*<p class="btn btn-primary btn-large" style="text-decoration-color:white;">@Html.ActionLink("Приступить к работе", "MyRoom", "Home", new { UserId = User.Identity.GetUserId().ToString() }, null) &raquo;</p>*@
+    }
+    else
+    {
+        <button class="btn btn-primary btn-large" onclick="location.href='@Url.Action("Login", "Account")';return false;">Авторизироватся</button>
+        @*@Html.ActionLink("Авторизироватся", "Login", "Account")*@
+    }
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2 style="text-align:center;">Учет затрат на топливо</h2>
+        <div style="text-align:center;">
+            <img src="~/Content/gas.png" width="250px" style="text-align:center">
+        </div>
+        <p>
+            Вы всегда можете контролировать реальный расход топлива, за любой отрезок времени, отслеживать статистику.
+        </p>
+        <p><a class="btn btn-default" href="">Узнать больше &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2 style="text-align:center;">Контроль замены масла</h2>
+        <div style="text-align:center;">
+            <img src="~/Content/oil.svg" width="250px" style="text-align:center">
+        </div>
+        <p>Сервис позволяет не беспокоится на счет замены масла и других жидкостей, он сам Вам напомнит когда и что нужно заменить.</p>
+        <p><a class="btn btn-default" href="">Узнать больше &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2 style="text-align:center;">Мониторинг неполадок</h2>
+        <div style="text-align:center;">
+            <img src="~/Content/service.png" width="250px" style="text-align:center">
+        </div>
+        <p>Чтобы диагностировать какую-либо неисправность Вам больше не нужно ехать на специальзированное СТО, теперь Вы можете это сделать с помощью нашего сервиса.</p>
+        <p><a class="btn btn-default" href="">Узнать больше &raquo;</a></p>
+    </div>
+</div>
+<div class="col-md-12">
+    <h2 style="text-align:center;">А также множество других функций!</h2>
+</div>

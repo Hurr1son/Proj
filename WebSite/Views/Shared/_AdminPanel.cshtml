@@ -1,0 +1,7 @@
+﻿@using Microsoft.AspNet.Identity
+@if (User.IsInRole("Admin"))
+{
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Admin Panel", "AdminPanel", "Home")</li>
+    </ul>
+}

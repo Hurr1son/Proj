@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Километраж и расход";
+}
+
+<h2>Километраж и расход</h2>
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Моя машина", "MyRoom", "Home")</li>
+    <li class="active">@Html.ActionLink("Километраж и расход", "Mileage", "Home")</li>
+    <li>@Html.ActionLink("Жидкости", "Oils", "Home")</li>
+    <li>@Html.ActionLink("Ошибки", "Errors", "Home")</li>
+    <li>@Html.ActionLink("Месторасположение", "FindVehicle", "Home")</li>
+</ul>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 16%;">Дата</th>
+                <th style="width: 14%;">Пробег (км)</th>
+                <th style="width: 14%;">Кол-во литров в баке</th>
+                <th style="width: 14%;">Литров заправлено</th>
+                <th style="width: 14%;">Цена</th>
+                <th style="width: 14%;">Расход (л/100 км)</th>
+                <th style="width: 14%;">За последние (км)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int counter = 0;}
+
+            @foreach (var i in ViewBag.Fuelings)
+            {
+                <tr>
+                    <td>@i.Date.ToShortDateString()</td>
+                    <td>@i.Mileage</td>
+                    <td>@i.TankValue</td>
+                    <td>@i.Value</td>
+                    <td>@i.Price</td>
+                    <td>@ViewBag.FuelSpends[counter]</td>
+                    <td>@ViewBag.Mileages[counter]</td>
+                    @{counter++;}
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr style="margin-top:0px;" />
+
+<div class="container" style="text-align:center; width: 75%">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p><b>Рассчитать расход по датам:</b></p>
+            <form class="form-inline" role="form">
+                <div class="form-group" style="display:inline;">
+                    <label for="name" style="display:inline;width:10%;">От:</label>
+                    <input type="date" style="display: inline; margin-left: 10px; width: 30%;" class="form-control" id="from"
+                           placeholder="Введите пробег">
+                </div>
+                <div class="form-group" style="display:inline;">
+                    <label for="name" style="display: inline; margin-left: 10px; width: 10%;">До:</label>
+                    <input type="date" style="display: inline; margin-left: 10px; width: 30%;" class="form-control" id="to"
+                           placeholder="Введите пробег">
+                </div>
+                <button type="submit" class="btn btn-primary" style="display: inline; margin-left: 10px; width: 20%;" onclick="calculateDate()">Рассчитать</button>
+                <script type="text/javascript">
+                    function calculateDate() {
+                        var from = document.getElementById('from').value;
+                        var to = document.getElementById('to').value;
+                        var res = to - from;
+
+                        alert(from);
+                    }
+                </script>
+            </form>
+        </div>
+    </div>
+</div>

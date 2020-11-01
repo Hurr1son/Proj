@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "CarsView";
+}
+
+<h2>Список всех автомобилей в базе</h2>
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Список очереди", "AdminPanel", "Home")</li>
+    <li class="active">@Html.ActionLink("Список автомобилей", "CarsView", "Home")</li>
+    <li>@Html.ActionLink("Список провеленных рем. работ", "RepairView", "Home")</li>
+</ul>
+<table class="table">
+    <td>Id</td>
+    <td>Марка</td>
+    <td>Модель</td>
+    <td>Год</td>
+    <td>Тип топлива</td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Brand</td>
+            <td>@item.Model</td>
+            <td>@item.Year</td>
+            <td>@item.EngineType</td>
+            <td>
+                <div>
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                   | @Html.ActionLink( "Проведенный ремонт", "AddRepair", new {id = item.Id})
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

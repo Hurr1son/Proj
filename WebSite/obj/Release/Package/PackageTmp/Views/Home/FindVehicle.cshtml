@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Месторасположение";
+}
+
+<h2>Месторасположение</h2>
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Моя машина", "MyRoom", "Home")</li>
+    <li>@Html.ActionLink("Километраж и расход", "Mileage", "Home")</li>
+    <li>@Html.ActionLink("Жидкости", "Oils", "Home")</li>
+    <li>@Html.ActionLink("Ошибки", "Errors", "Home")</li>
+    <li class="active">@Html.ActionLink("Месторасположение", "FindVehicle", "Home")</li>
+</ul>
+
+<div class="container" style="margin-top: 10px;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164153.52230204782!2d36.14574083111585!3d49.99450702427464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2z0KXQsNGA0LrRltCyLCDQpdCw0YDQutGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1suk!2sua!4v1513086796061" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+

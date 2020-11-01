@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+<ul class="nav nav-tabs">
+    <li class="active">@Html.ActionLink("Список очереди", "AdminPanel", "Home")</li>
+    <li>@Html.ActionLink("Список автомобилей", "CarsView", "Home")</li>
+    <li>@Html.ActionLink("Список провеленных рем. работ", "RepairView", "Home")</li>
+</ul>
+
+<table class="table">
+    <td>Id</td>
+    <td>Описание</td>
+    <td>Дата</td>
+    <td>Почта</td>
+    <td>Статус автомобиля</td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CarId</td>
+            <td>@item.Description</td>
+            <td>@item.DateTime</td>
+            <td>@item.Email</td>
+            <td>@item.CarStatus</td>
+
+
+            <td>
+                <div>
+                    @Html.ActionLink("Готово", "SendMessage", new { Email = item.Email })
+                    |  @Html.ActionLink("Дата Очереди", "SendMessage2", new { Email = item.Email, DateTime = item.DateTime })
+                    |  @Html.ActionLink("Редактировать ", "Edit", new { CarId = item.CarId, id = item.Id })
+                    |  @Html.ActionLink("Удалить ", "Delete2", new { id = item.Id })
+
+
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

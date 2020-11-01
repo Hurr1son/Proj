@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>Контакты</h2>
+<h3>Связатся с нами</h3>
+
+@*@ViewBag.car.Brand
+@ViewBag.car.Model*@
+@foreach (var i in ViewBag.car)
+{
+    <p>
+        @i.Mileage @i.Value
+    </p>
+}
+<hr />
+<address>
+    NURE<br />
+    Kharkiv, Nauki Ave. 14<br />
+    <abbr title="Phone">P:</abbr>
+    +380957825355
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

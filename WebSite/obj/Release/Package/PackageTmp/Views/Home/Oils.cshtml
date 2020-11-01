@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Жидкости";
+}
+
+<h2>Жидкости</h2>
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Моя машина", "MyRoom", "Home")</li>
+    <li>@Html.ActionLink("Километраж и расход", "Mileage", "Home")</li>
+    <li class="active">@Html.ActionLink("Жидкости", "Oils", "Home")</li>
+    <li>@Html.ActionLink("Ошибки", "Errors", "Home")</li>
+    <li>@Html.ActionLink("Месторасположение", "FindVehicle", "Home")</li>
+</ul>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 25%;">Дата</th>
+                <th style="width: 25%;">Тип жидкости</th>
+                <th style="width: 25%;">Пробег (км)</th>
+                <th style="width: 25%;">Литров залито</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in ViewBag.Oils)
+            {
+                <tr>
+                    <td>@i.Date.ToShortDateString()</td>
+                    <td>@i.LiquidType.Name</td>
+                    <td>@i.Mileage</td>
+                    <td>@i.LiquidAmount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

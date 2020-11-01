@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "BuyDevice";
+}
+
+<h2>Заказать устройство</h2>
+<div style="text-align:center">
+    <img src="~/Content/device.png" width="250px">
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Имя</label>
+            <div class="col-md-10">
+                <input class="form-control" name="Name" type="text" value="" required placeholder="Имя" />
+                @*@Html.TextBox("Items", "", new { @class = "form-control", @placeholder = "Наименование" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Фамилия</label>
+            <div class="col-md-10">
+                <input class="form-control" name="Surname" type="text" value="" required placeholder="Фамилия" />
+                @*@Html.TextBox("Items", "", new { @class = "form-control", @placeholder = "Ширина" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Город</label>
+            <div class="col-md-10">
+                <input class="form-control" name="City" type="text" value="" required placeholder="Город" />
+                @*@Html.TextBox("Items", "", new { @class = "form-control", @placeholder = "Высота" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Количество</label>
+            <div class="col-md-10">
+                <input class="form-control" name="Weight" type="number" value="" required placeholder="Количество " />
+                @*@Html.TextBox("Items", "", new { @class = "form-control", @placeholder = "Вес" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Отделение почты</label>
+            <div class="col-md-10">
+                <select class="form-control" id="sel1" name="Type" required>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Заказать" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+

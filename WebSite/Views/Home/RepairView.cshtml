@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "RepairView";
+}
+
+<h2>Список всех проведенных работ</h2>
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Список очереди", "AdminPanel", "Home")</li>
+    <li>@Html.ActionLink("Список автомобилей", "CarsView", "Home")</li>
+    <li class="active">@Html.ActionLink("Список провеленных рем. работ", "RepairView", "Home")</li>
+</ul>
+<table class="table">
+    <td>Id</td>
+    <td>Id Авто</td>
+    <td>Описание ремонта</td>
+    <td>Дата</td>
+    @foreach (var item in ViewData.Model)
+    {
+<tr>
+    <td>@item.Id</td>
+    <td>@item.CarId</td>
+    <td>@item.RepairDesc</td>
+    <td>@item.DateTime</td>
+    <td>
+        <div>
+            @Html.ActionLink("Удалить", "Delete", new { CarId = item.CarId, id = item.Id })
+        </div>
+    </td>
+
+</tr>
+    }
+</table>

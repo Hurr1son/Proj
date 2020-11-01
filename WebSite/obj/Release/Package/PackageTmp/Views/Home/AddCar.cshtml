@@ -1,0 +1,114 @@
+﻿@model WebSite.Models.Car
+
+@{
+    ViewBag.Title = "Добавить авто";
+}
+
+<h2>Добавить авто</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.UserId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserId)
+                    @Html.ValidationMessageFor(model => model.UserId)
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Brand, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Марка:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Brand)
+                @Html.ValidationMessageFor(model => model.Brand)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Model, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Модель:</label>
+            <div class="col-md-10">                
+                @Html.EditorFor(model => model.Model)
+                @Html.ValidationMessageFor(model => model.Model)
+            </div>
+        </div>
+
+        <div class="form-group">
+           @* @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Год выпуска:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Year)
+                @Html.ValidationMessageFor(model => model.Year)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.EngineType, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Вид двигателя:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EngineType)
+                @Html.ValidationMessageFor(model => model.EngineType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.EngineAmount, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Объем двигателя:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EngineAmount)
+                @Html.ValidationMessageFor(model => model.EngineAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.GearBoxType, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Тип КПП:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GearBoxType)
+                @Html.ValidationMessageFor(model => model.GearBoxType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.TankAmount, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Объем бака:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TankAmount)
+                @Html.ValidationMessageFor(model => model.TankAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.IsCarHasDC, new { @class = "control-label col-md-2" })*@
+            <label for="model.Brand" class="control-label col-md-2">Имеется ли порт для диагностики?</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsCarHasDC)
+                @Html.ValidationMessageFor(model => model.IsCarHasDC)
+            </div>
+        </div>
+
+        @ViewBag.uid = User.Identity.GetUserId().ToString();
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" onclick="addCarFunc()" />
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function addCarFunc() {
+                alert("Машина успешно добавлена!");
+            }
+        </script>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад в кабинет", "MyRoom")
+</div>

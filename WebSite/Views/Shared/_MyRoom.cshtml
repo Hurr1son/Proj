@@ -1,0 +1,7 @@
+﻿@using Microsoft.AspNet.Identity
+@if (User.IsInRole("User"))
+{
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("My office", "UserPanel", "Home")</li>
+    </ul>
+}

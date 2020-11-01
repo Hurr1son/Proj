@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Ошибки";
+}
+
+<h2>Ошибки</h2>
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Моя машина", "MyRoom", "Home")</li>
+    <li>@Html.ActionLink("Километраж и расход", "Mileage", "Home")</li>
+    <li>@Html.ActionLink("Жидкости", "Oils", "Home")</li>
+    <li class="active">@Html.ActionLink("Ошибки", "Errors", "Home")</li>
+    <li>@Html.ActionLink("Месторасположение", "FindVehicle", "Home")</li>
+</ul>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 25%;">Дата</th>
+                <th style="width: 25%;">Тип ошибки</th>
+                <th style="width: 25%;">Пробег (км)</th>
+                <th style="width: 25%;">Исправлена ли?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in ViewBag.Errors)
+            {
+                <tr>
+                    <td>@i.Date.ToShortDateString()</td>
+                    <td>@i.ErrorType.Decsription</td>
+                    <td>@i.Mileage</td>
+                    @if (i.IsFixed)
+                    {
+                        <td><span class="label label-success">Да</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="label label-danger">Нет</span></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

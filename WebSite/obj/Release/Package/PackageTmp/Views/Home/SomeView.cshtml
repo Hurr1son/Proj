@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Мой кабинет";
+}
+
+<h2>Мой кабинет</h2>
+
+@*<ul class="nav nav-pills">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Menu 1</a></li>
+        <li><a href="#">Menu 2</a></li>
+        <li><a href="#">Menu 3</a></li>
+    </ul>*@
+
+@*@Html.Label(User.Identity.GetUserId());*@
+
+<ul class="nav nav-tabs">
+    <li class="active">@Html.ActionLink("Моя машина", "MyRoom", "Home")</li>
+    <li>@Html.ActionLink("Километраж и расход", "Mileage", "Home")</li>
+    <li>@Html.ActionLink("Жидкости", "Oils", "Home")</li>
+    <li>@Html.ActionLink("Ошибки", "Errors", "Home")</li>
+    <li>@Html.ActionLink("Месторасположение", "FindVehicle", "Home")</li>
+</ul>
+<br />
+
+@if (ViewBag.Message == "Liquid")
+{
+    <div class="alert alert-success" >
+        <strong>Информация о замене жидкости добавлена!</strong>
+        Чтобы посмтотреть статистику перейдите во вкладку "Жидкости".
+    </div>
+}
+
+@if (ViewBag.Message == "Fuel")
+{
+    <div class="alert alert-success">
+        <strong>Информация о заправке добавлена!</strong>
+        Чтобы посмтотреть статистику перейдите во вкладку "Километраж и расход".
+    </div>
+}
+
+
+@if (ViewBag.Message == "Float")
+{
+    <div class="alert alert-danger">
+        <strong>Информация не добавлена!</strong>
+        Вы ввели некорректные данные.
+    </div>
+}
+
+@if (ViewBag.Message == "IncorrectMileage")
+{
+    <div class="alert alert-danger">
+        <strong>Информация не добавлена!</strong>
+        Вы ввели некорректное значение пробега.
+    </div>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading" style="font-size:30px;">
+        Мой автомобиль: <button type="button" onclick="location.href='@Url.Action("AddCar2", "Home")';return false;" class="btn btn-primary" id="addCarBTN" style="float:right;margin-top:5px;">Добавить автомобиль</button>
+        <button type="button" onclick="location.href='@Url.Action("AddCar2", "Home")';return false;" class="btn btn-info" id="editCarBTN" style="float:right;margin-top:5px;margin-right:5px;">Редактировать автомобиль</button>
+        <button type="button" onclick="location.href='@Url.Action("EmulateIOT", "Home")';return false;" class="btn btn-default" id="emulateIOTBTN" style="float:right;margin-top:5px;margin-right:5px;">Эмуляция работы IOT</button>
+    </div>
+    <div class="panel-body">
+        <ul>
+            @if (ViewBag.IsUserHasCar)
+            {
+                <li>Марка:@ViewBag.Car.Brand</li>
+                <li>Модель:@ViewBag.Car.Model</li>
+                <li>Год выпуска:@ViewBag.Car.Year</li>
+                <li>Тип двигателя:@ViewBag.Car.EngineType</li>
+                <li>Объем двигателя:@ViewBag.Car.EngineAmount</li>
+                <li>КПП:@ViewBag.Car.GearBoxType</li>
+                <li>Объем бака:@ViewBag.Car.TankAmount</li>
+                if (ViewBag.Car.IsCarHasDC)
+                {
+                    <li>Имеет ли диагностический порт: <span class="label label-success">Да</span></li>
+                }
+                else
+                {
+                    <li>Имеет ли диагностический порт: <span class="label label-danger">Нет</span></li>
+                }
+            }
+            else
+            {
+                <li>Марка:</li>
+                <li>Модель:</li>
+                <li>Год выпуска:</li>
+                <li>Тип двигателя:</li>
+                <li>Объем двигателя:</li>
+                <li>КПП:</li>
+                <li>Объем бака:</li>
+                <li>Имеет ли диагностический порт:</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-4 panel panel-default" style="padding: 0px;">
+            <div class="panel-heading" style="font-size:25px; text-align:center;">
+                Добавить информацию о заправке
+            </div>
+            <div class="panel-body">
+                <form role="form" name="addMileage" method="post" action="/Home/AddMileage">
+                    <div class="form-group" title="Введите целое или вещественное значение в формате '11,2'">
+                        <label for="name">Текущий пробег: <span class="glyphicon glyphicon-question-sign"></span></label>
+                        <input name="Mileage" type="text" class="form-control" id="mileage"
+                               placeholder="Введите пробег" required>
+                    </div>
+                    <div class="form-group" title="Введите целое">
+                        <label for="name">Количество литров в баке: <span class="glyphicon glyphicon-question-sign"></span></label>
+                        <input name="FuelInTank" type="text" class="form-control" id="gas_amount_tank"
+                               placeholder="Введите количество" required>
+                    </div>
+                    <div class="form-group" title="Введите целое">
+                        <label for="name">Количество залитых литров: <span class="glyphicon glyphicon-question-sign"></span></label>
+                        <input name="FuelAmount" type="text" class="form-control" id="gas_amount"
+                               placeholder="Введите количество" required>
+                    </div>
+                    <div class="form-group" title="Введите целое или вещественное значение в формате '11,2'">
+                        <label for="name">Стоимость: <span class="glyphicon glyphicon-question-sign"></span></label>
+                        <input name="Price" type="text" class="form-control" id="price"
+                               placeholder="Введите стоимость" required>
+                    </div>
+                    @*<div class="checkbox">
+                <label>
+                    <input type="checkbox"> Check me out
+                </label>
+            </div>*@
+                    <button type="submit" id="addFuelBTN" class="btn btn-primary">Добавить</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-4 panel panel-default" style="padding: 0px;">
+            <div class="panel-heading" style="font-size: 25px; text-align: center;">
+                Добавить информацию о замене жидкости
+            </div>
+            <div class="panel-body">
+                <form role="form" method="post" action="/Home/AddLiquid">
+                    <div class="form-group">
+                        <label for="name">Тип жидкости</label>
+                        <select class="form-control" name="LiquidType">
+                            <option selected>Масло</option>
+                            <option>Антифриз</option>
+                            <option>Омыватель стекла</option>
+                        </select>
+                    </div>
+                    <div class="form-group" title="Введите целое или вещественное значение в формате '11,2'">
+                        <label for="name">Текущий пробег: <span class="glyphicon glyphicon-question-sign"></span></label>
+                        <input type="text" class="form-control" name="Mileage" id="mileage"
+                               placeholder="Введите пробег" required>
+                    </div>
+                    <div class="form-group" title="Введите целое или вещественное значение в формате '11,2'">
+                        <label for="name">Количество литров: <span class="glyphicon glyphicon-question-sign"></span></label>
+                        <input type="text" class="form-control" name="LiquidAmount" id="name"
+                               placeholder="Введите количество" required>
+                    </div>
+                    @*<div class="form-group">
+                <label for="name">Стоимость:</label>
+                <input type="text" class="form-control" id="price"
+                       placeholder="Введите стоимость">
+            </div>*@
+                    <button type="submit" id="addOilBTN" class="btn btn-primary">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!ViewBag.IsUserHasCar)
+{
+    <script type="text/javascript">
+        document.getElementById('addCarBTN').disabled = false;
+        document.getElementById('editCarBTN').disabled = true;
+        document.getElementById('addFuelBTN').disabled = true;
+        document.getElementById('addOilBTN').disabled = true;
+        document.getElementById('emulateIOTBTN').disabled = true;
+    </script>
+}
+else
+{
+    <script type="text/javascript">
+        document.getElementById('addCarBTN').disabled = true;
+        document.getElementById('editCarBTN').disabled = false;
+        document.getElementById('addFuelBTN').disabled = false;
+        document.getElementById('addOilBTN').disabled = false;
+        document.getElementById('emulateIOTBTN').disabled = false;
+    </script>
+}
